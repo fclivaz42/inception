@@ -10,3 +10,7 @@ RUN mkdir -p /run/mysqld
 RUN chown -R mysql:mysql /var/lib/mysql
 RUN chown -R mysql:mysql /run/mysqld
 COPY conf/mariadb.conf /etc/my.cnf.d/mariadb-server.cnf
+COPY tools/bootstrap.sh /tmp/bootstrap.sh
+RUN mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm
+
+ENTRYPOINT ["sh", "/tmp/bootstrap.sh"]
