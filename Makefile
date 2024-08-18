@@ -6,23 +6,26 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/18 02:58:26 by fclivaz           #+#    #+#              #
-#    Updated: 2024/08/18 03:04:09 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2024/08/18 18:03:49 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
-all: up
+all: build
 
-up:
-	docker-compose -f ./srcs/docker-compose.yml up -d
+build:
+	docker-compose -p inception -f ./srcs/docker-compose.yml build
+
+up: build
+	docker-compose -p inception -f ./srcs/docker-compose.yml up -d
 
 down:
-	docker-compose -f ./srcs/docker-compose.yml down -v
+	docker-compose -p inception -f ./srcs/docker-compose.yml down -v
 
 start:
-	docker-compose -f ./srcs/docker-compose.yml start
+	docker-compose -p inception -f ./srcs/docker-compose.yml start
 
 stop:
-	docker-compose -f ./srcs/docker-compose.yml stop
+	docker-compose -p inception -f ./srcs/docker-compose.yml stop
 
 status:
 	docker ps -a

@@ -4,7 +4,7 @@ sed -i "s/;clear/clear/g" www.conf
 
 cd /var/www/wordpress
 sed -i "s/'database_name_here'/'$SQL_DB'/g" wp-config-sample.php
-sed -i "s/'username_here'/'$SQL_DB'/g" wp-config-sample.php
+sed -i "s/'username_here'/'$SQL_USR'/g" wp-config-sample.php
 sed -i "s/'password_here'/'$SQL_PW'/g" wp-config-sample.php
 sed -i "s/'localhost'/'mariadb:3306'/g" wp-config-sample.php
 mv wp-config-sample.php wp-config.php
@@ -15,7 +15,7 @@ wp-cli core install --url=$DOM_NAME/ \
 					--title=$SITE_TITLE\
 					--admin_user=$WP_ADMINNAME\
 					--admin_password=$WP_ADMINPASS\
-					--admin_email=$WP_ADMINMAIN\
+					--admin_email=$WP_ADMINMAIL\
 					--skip-email\
 					--allow-root
 wp-cli user create	$WP_USER\
@@ -32,6 +32,6 @@ wp-cli plugin install redis-cache\
 wp-cli plugin update\
 					--all\
 					--allow-root
-wp-cli redis enable --allow-root
+#wp-cli redis enable --allow-root
 
 php-fpm83 -F

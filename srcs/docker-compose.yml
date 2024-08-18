@@ -42,7 +42,7 @@ services:
     build: requirements/nginx/
     env_file: .env
     expose:
-      - "443:443"
+      - "443"
     volumes:
       - wordpress:/var/lib/mysql
     depends_on:
