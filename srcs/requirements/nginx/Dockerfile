@@ -13,4 +13,4 @@ COPY conf/nginx.conf /etc/nginx/http.d/nginx.conf
 
 EXPOSE 443
 
-#ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

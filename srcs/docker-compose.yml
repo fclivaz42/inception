@@ -41,10 +41,10 @@ services:
       - inception
     build: requirements/nginx/
     env_file: .env
-    expose:
-      - "443"
+    ports:
+      - "443:443"
     volumes:
-      - wordpress:/var/lib/mysql
+      - wordpress:/var/www/wordpress
     depends_on:
       - wordpress
     restart: on-failure

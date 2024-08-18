@@ -23,9 +23,6 @@ wp-cli user create	$WP_USER\
 					--user_pass=$WP_USERPASS\
 					--role=author\
 					--allow-root
-wp-cli theme install astra\
-					--activate\
-					--allow-root
 wp-cli plugin install redis-cache\
 					--activate\
 					--allow-root
