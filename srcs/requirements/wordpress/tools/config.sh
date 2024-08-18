@@ -7,6 +7,9 @@ sed -i "s/'database_name_here'/'$SQL_DB'/g" wp-config-sample.php
 sed -i "s/'username_here'/'$SQL_USR'/g" wp-config-sample.php
 sed -i "s/'password_here'/'$SQL_PW'/g" wp-config-sample.php
 sed -i "s/'localhost'/'mariadb:3306'/g" wp-config-sample.php
+sed -i "59i define( 'WP_REDIS_HOST', 'redis' );" wp-config-sample.php
+sed -i "60i define( 'WP_REDIS_PORT', 6379 );" wp-config-sample.php
+sed -i "61i define( 'WP_CACHE', true );" wp-config-sample.php
 mv wp-config-sample.php wp-config.php
 
 sleep 10
@@ -29,6 +32,6 @@ wp-cli plugin install redis-cache\
 wp-cli plugin update\
 					--all\
 					--allow-root
-#wp-cli redis enable --allow-root
+wp-cli redis enable --allow-root
 
 php-fpm83 -F
