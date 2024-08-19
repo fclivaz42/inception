@@ -1,0 +1,23 @@
+#DOCKER-BONUS-COMPOSE
+services:
+  redis:
+    container_name: redis
+    networks:
+        - inception
+    build: bonus/redis/
+    ports:
+      - "6379"
+    volumes:
+      - wordpress:/var/www/wordpress
+    depends_on:
+      - wordpress
+    restart: always
+
+  adminer:
+    container_name: adminer
+    networks:
+        - inception
+    build: bonus/adminer/
+    depends_on:
+      - mariadb
+    restart: always

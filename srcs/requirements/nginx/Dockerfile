@@ -12,6 +12,6 @@ RUN sed -i "s/ TLSv1.1//g" /etc/nginx/nginx.conf
 # RUN chmod 755 /var/www/wordpress
 # RUN chown -R www-data:www-data /var/www/wordpress
 
-EXPOSE 443
+# EXPOSE 443
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
